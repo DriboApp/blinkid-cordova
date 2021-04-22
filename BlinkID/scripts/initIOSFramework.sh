@@ -8,8 +8,8 @@ LINK='https://github.com/BlinkID/blinkid-ios/releases/download/v5.11.0/Microblin
 FILENAME='Microblink.xcframework.zip'
 
 # check if Microblink framework and bundle already exist
-wget --version > /dev/null 2>&1 || { echo "ERROR: couldn't download Microblink framework, install wget" &&  exit 1; }
-wget -O "${FILENAME}" "${LINK}" -nv --show-progress || ( echo "ERROR: couldn't download Microblink framework, Something went wrong while downloading framework from ${LINK}" && exit 1 )
+# wget --version > /dev/null 2>&1 || { echo "ERROR: couldn't download Microblink framework, install wget" &&  exit 1; }
+curl -o "${FILENAME}" "${LINK}" --progress-bar || ( echo "ERROR: couldn't download Microblink framework, Something went wrong while downloading framework from ${LINK}" && exit 1 )
 
 if [ -d 'Microblink.bundle' ] ; then
     rm -rf Microblink.bundle && echo "Removing Microblink.bundle"
